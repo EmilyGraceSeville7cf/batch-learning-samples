@@ -11,7 +11,6 @@ set "colors[6]=F"
 set /a "length=7"
 
 set /a "sleep=1"
-set /a "width=4"
 
 cls
 for /l %%i in (1, 1, 9) do (
