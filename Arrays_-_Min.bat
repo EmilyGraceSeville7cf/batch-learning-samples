@@ -27,6 +27,7 @@ setlocal disabledelayedexpansion
 exit /b %ec_success%
 
 :read_integer
+    set "result="
     set "prompt=%~1"
 
     :read_integer_loop

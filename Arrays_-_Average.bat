@@ -39,6 +39,7 @@ exit /b %ec_success%
 
 :read_integer_array
     set /a "count=%~1"
+    set "result="
 
     for /l %%i in (1, 1, %count%) do (
         call :read_integer "Item %%i: "
