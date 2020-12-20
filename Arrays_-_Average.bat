@@ -64,9 +64,12 @@ exit /b %ec_success%
 exit /b %ec_success%
 
 :find_average
+    set /a "ec_no_bc_found=10"
+
     bc --version > nul 2> nul
     if errorlevel 1 (
         echo bc command not found to calculate average >&2
+        exit /b %ec_no_bc_found%
     )
 
     set tmpFile="tmp.txt"

@@ -11,9 +11,15 @@ pause
 echo on
 @goto eof
 
+:init
+    set /a "ec_success=0"
+    set /a "ec_unknown_error=1"
+
+    cls
+exit /b %ec_success%
+
 :test_pattern
-    set /a "success=0"
-    set /a "failure=1"
+    set /a "ec_matching_failed=10"
     set /a "status=%success%"
 
     set "pattern=%~1"
@@ -36,7 +42,7 @@ echo on
         echo !value[%%i]!| findstr /I /R /C:"^%pattern%$" > nul
         if errorlevel 1 (
             echo "!value[%%i]!" doesn't match pattern
-            set /a "status=%failure%"
+            set /a "status=%ec_matching_failed%"
         ) else (
             echo "!value[%%i]!" matches pattern
         )
