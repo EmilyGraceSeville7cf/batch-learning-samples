@@ -26,6 +26,7 @@ setlocal disabledelayedexpansion
     set /a "ec_bc_not_found=10"
 
     cls
+    call :set_esc
 exit /b %ec_success%
 
 :read_integer
@@ -54,7 +55,7 @@ exit /b %ec_success%
 
     echo| set /p="["
     for /l %%i in (1, 1, %count%) do (
-        echo| set /p=!%arrayName%[%%i]!
+        echo| set /p=%ESC%[32m!%arrayName%[%%i]!%ESC%[0m
         if %%i lss %count% (
             echo| set /p=, 
         )
@@ -86,6 +87,13 @@ exit /b %ec_success%
     
     for /f "delims=" %%i in ('type %tmpFile%') do set "result=%%i"
     del "%tmpFile%"
+exit /b %ec_success%
+
+:set_esc
+    for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
+        set "esc=%%b"
+        exit /B 0
+    )
 exit /b %ec_success%
 
 :eof
