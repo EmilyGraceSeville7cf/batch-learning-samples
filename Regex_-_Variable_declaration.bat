@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 set "alpha=abcdefghijklmnopqrstuvwxyz"
 set "digit=0123456789"
 set "alnum=%alpha%%digit%"
@@ -8,6 +9,7 @@ set "baseType=[%alpha%][%alnum%]*[ ][ ]*[%alpha%][%alnum%]*[ ]*=[ ]*[%alnum%][%a
 call :test_pattern "%baseType%" "int x=1" "x=1" "=1" "1" "int x=" "x=" "=" "int x" "x" "int"
 
 pause
+setlocal disabledelayedexpansion
 echo on
 @goto eof
 
@@ -37,7 +39,6 @@ exit /b %ec_success%
     set /a "count=%i% - 1"
     set /a "i=1"
 
-    setlocal enabledelayedexpansion
     for /l %%i in (1 1 %count%) do (
         echo !value[%%i]!| findstr /I /R /C:"^%pattern%$" > nul
         if errorlevel 1 (
@@ -47,7 +48,6 @@ exit /b %ec_success%
             echo "!value[%%i]!" matches pattern
         )
     )
-    setlocal disabledelayedexpansion
 exit /b %status%
 
 :eof
