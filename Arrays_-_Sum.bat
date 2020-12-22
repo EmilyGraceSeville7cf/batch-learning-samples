@@ -15,8 +15,6 @@ set sum=%result%
 echo sum=%sum%
 
 pause
-setlocal disabledelayedexpansion
-@echo on
 @goto :eof
 
 :init

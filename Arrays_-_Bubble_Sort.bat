@@ -19,8 +19,6 @@ for /l %%i in (1, 1, %count%) do (
 call :print_array %count% array
 
 pause
-setlocal disabledelayedexpansion
-@echo on
 @goto :eof
 
 :init

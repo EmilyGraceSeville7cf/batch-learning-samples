@@ -15,8 +15,6 @@ set /a min=%result%
 echo min=%min%
 
 pause
-setlocal disabledelayedexpansion
-@echo on
 @goto :eof
 
 :init

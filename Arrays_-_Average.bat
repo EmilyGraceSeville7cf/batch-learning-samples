@@ -15,8 +15,6 @@ set average=%result%
 echo average=%average%
 
 pause
-setlocal disabledelayedexpansion
-@echo on
 @goto :eof
 
 :init

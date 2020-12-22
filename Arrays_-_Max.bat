@@ -15,8 +15,6 @@ set /a max=%result%
 echo max=%max%
 
 pause
-setlocal disabledelayedexpansion
-@echo on
 @goto :eof
 
 :init

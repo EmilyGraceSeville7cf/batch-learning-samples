@@ -3,8 +3,6 @@ call :init
 setlocal enabledelayedexpansion
 call :echo_table
 call :blinking
-setlocal disabledelayedexpansion
-@echo on
 @goto :eof
 
 :init

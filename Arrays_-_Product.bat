@@ -15,8 +15,6 @@ set product=%result%
 echo product=%product%
 
 pause
-setlocal disabledelayedexpansion
-@echo on
 @goto :eof
 
 :init

@@ -9,8 +9,6 @@ set "baseType=[%alpha%][%alnum%]*[ ][ ]*[%alpha%][%alnum%]*[ ]*=[ ]*[%alnum%][%a
 call :test_pattern "%baseType%" "int x=1" "x=1" "=1" "1" "int x=" "x=" "=" "int x" "x" "int"
 
 pause
-setlocal disabledelayedexpansion
-echo on
 @goto eof
 
 :init

@@ -1,16 +1,16 @@
 @echo off
+setlocal enabledelayedexpansion
 call :init
 call :blinking
-@echo on
 @goto :eof
 
 :init
     set "ec_success=0"
     set "ec_unknown_error=1"
 
-    set "colors[0]=9" && set "colors[1]=A" && set "colors[2]=B"
-    set "colors[3]=C" && set "colors[4]=D" && set "colors[5]=E"
-    set "colors[6]=F" && set /a "length=7"
+    set "colors[0]=9" & set "colors[1]=A" & set "colors[2]=B"
+    set "colors[3]=C" & set "colors[4]=D" & set "colors[5]=E"
+    set "colors[6]=F" & set /a "length=7"
 
     set /a "sleep=1"
 
@@ -22,13 +22,11 @@ exit /b %ec_success%
 :blinking
     echo %text%
 
-    setlocal enabledelayedexpansion
     :while_true
     set /a "i=%random% %% %length%"
     color !colors[%i%]!F
     timeout %sleep% > nul
     goto :while_true
-    setlocal disabledelayedexpansion
 exit /b %ec_success%
 
 :eof
