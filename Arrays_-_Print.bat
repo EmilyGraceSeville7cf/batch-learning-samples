@@ -1,13 +1,12 @@
 @echo off
-call :init
 setlocal enabledelayedexpansion
+call :init
+
 call :read_integer "Item count: "
 set /a count=%result%
 call :read_integer_array %count%
 
-for /l %%i in (1, 1, %count%) do (
-    set /a array[%%i]=!result[%%i]!
-)
+for /l %%i in (1, 1, %count%) do set /a array[%%i]=!result[%%i]!
 
 call :print_array %count% array
 
@@ -28,8 +27,7 @@ exit /b %ec_success%
 
     :read_integer_loop
         set /p "result=%prompt%"
-        echo %result%| findstr "^[0-9][0-9]*$ ^+[0-9][0-9]*$ ^-[0-9][0-9]*$" > nul
-    if errorlevel 1 goto :read_integer_loop
+        echo %result%| findstr "^[0-9][0-9]*$ ^+[0-9][0-9]*$ ^-[0-9][0-9]*$" > nul || goto :read_integer_loop
 exit /b %ec_success%
 
 :read_integer_array
@@ -46,21 +44,19 @@ exit /b %ec_success%
     set /a "count=%~1"
     set "arrayName=%~2"
 
-    echo| set /p="["
+    echo| set /p "=["
     for /l %%i in (1, 1, %count%) do (
         echo| set /p=%ESC%[32m!%arrayName%[%%i]!%ESC%[0m
-        if %%i lss %count% (
-            echo| set /p=, 
-        )
+        if %%i lss %count% echo| set /p "=, "
     )
     echo ]
     endlocal
 exit /b %ec_success%
 
 :set_esc
-    for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
+    for /f "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
         set "esc=%%b"
-        exit /B 0
+        exit /b 0
     )
 exit /b %ec_success%
 
