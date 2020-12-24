@@ -12,7 +12,7 @@ call :test_pattern "%baseType%" "int x=1" "x=1" "=1" "1" "int x=" "x=" "=" "int 
 set "testPatternErrorLevel=%ERRORLEVEL%"
 
 pause
-@goto :eof
+exit /b %testPatternErrorLevel%
 
 :init
     set /a "ec_success=0"
@@ -58,6 +58,3 @@ exit /b %status%
         exit /b 0
     )
 exit /b %ec_success%
-
-:eof
-exit /b %testPatternErrorLevel%

@@ -1,7 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
 call :init
+
 call :blinking
+
 @goto :eof
 
 :init
@@ -10,8 +12,9 @@ call :blinking
 
     set "colors[0]=9" & set "colors[1]=A" & set "colors[2]=B"
     set "colors[3]=C" & set "colors[4]=D" & set "colors[5]=E"
-    set "colors[6]=F" & set /a "length=7"
-
+    set "colors[6]=F"
+    
+    set /a "length=7"
     set /a "sleep=1"
 
     set "text=Hello World^!"
@@ -23,10 +26,10 @@ exit /b %ec_success%
     echo %text%
 
     :while_true
-    set /a "i=%random% %% %length%"
-    color !colors[%i%]!F
-    timeout %sleep% > nul
-    goto :while_true
+        set /a "i=%random% %% %length%"
+        color !colors[%i%]!F
+        timeout %sleep% > nul
+        goto :while_true
 exit /b %ec_success%
 
 :eof
