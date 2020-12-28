@@ -29,5 +29,5 @@ exit /b %ec_success%
         set /a "i=%random% %% %length%"
         color !colors[%i%]!
         timeout %sleep% > nul
-        goto :while_true
+        goto while_true
 exit /b %ec_success%

@@ -23,7 +23,7 @@ exit /b %ec_success%
         call set "char=%%stringToGetLength:~%i%,1%%"
         if defined char (
             set /a "i+=1"
-            goto :get_char_loop
+            goto get_char_loop
         )
     
     set /a "result=%i%"

@@ -36,7 +36,7 @@ exit /b %ec_success%
         set "value[%i%]=%~1"
         set /a "i+=1"
         shift
-        goto :while_there_are_arguments
+        goto while_there_are_arguments
     )
 
     set /a "count=%i% - 1"

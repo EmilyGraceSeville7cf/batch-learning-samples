@@ -32,7 +32,7 @@ exit /b %ec_success%
 
     :read_integer_loop
         set /p "result=%prompt%"
-        echo %result%| findstr "^[0-9][0-9]*$ ^+[0-9][0-9]*$ ^-[0-9][0-9]*$" > nul || goto :read_integer_loop
+        echo %result%| findstr "^[0-9][0-9]*$ ^+[0-9][0-9]*$ ^-[0-9][0-9]*$" > nul || goto read_integer_loop
 exit /b %ec_success%
 
 :read_integer_array
@@ -75,10 +75,10 @@ exit /b %ec_success%
                 set /a result[%j%]=!tmp!
             )
             set /a "j+=1"
-        if %j% leq %count% goto :inner_sort_loop
+        if %j% leq %count% goto inner_sort_loop
         set /a "i+=1"
         set /a "j=%i% + 1"
-    if %i% leq %count% goto :outer_sort_loop
+    if %i% leq %count% goto outer_sort_loop
 exit /b %ec_success%
 
 :set_esc

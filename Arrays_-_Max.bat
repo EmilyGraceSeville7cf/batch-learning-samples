@@ -30,7 +30,7 @@ exit /b %ec_success%
 
     :read_integer_loop
         set /p "result=%prompt%"
-        echo %result%| findstr "^[0-9][0-9]*$ ^+[0-9][0-9]*$ ^-[0-9][0-9]*$" > nul || goto :read_integer_loop
+        echo %result%| findstr "^[0-9][0-9]*$ ^+[0-9][0-9]*$ ^-[0-9][0-9]*$" > nul || goto read_integer_loop
 exit /b %ec_success%
 
 :read_integer_array
