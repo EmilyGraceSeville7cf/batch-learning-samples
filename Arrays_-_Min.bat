@@ -14,7 +14,7 @@ set /a min=%result%
 echo min=%min%
 
 pause
-@goto :eof
+exit /b %ec_success%
 
 :init
     set /a "ec_success=0"
@@ -72,5 +72,3 @@ exit /b %ec_success%
         exit /b 0
     )
 exit /b %ec_success%
-
-:eof

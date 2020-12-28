@@ -16,7 +16,7 @@ for /l %%i in (1, 1, %count%) do set /a array[%%i]=!result[%%i]!
 call :print_array %count% array
 
 pause
-@goto :eof
+exit /b %ec_success%
 
 :init
     set /a "ec_success=0"
@@ -87,5 +87,3 @@ exit /b %ec_success%
         exit /b 0
     )
 exit /b %ec_success%
-
-:eof

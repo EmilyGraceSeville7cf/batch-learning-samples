@@ -4,7 +4,7 @@ call :init
 
 call :blinking
 
-@goto :eof
+exit /b %ec_success%
 
 :init
     set "ec_success=0"
@@ -31,5 +31,3 @@ exit /b %ec_success%
         timeout %sleep% > nul
         goto :while_true
 exit /b %ec_success%
-
-:eof
